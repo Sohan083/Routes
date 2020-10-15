@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -71,6 +72,9 @@ public class ProfileFragment extends RoutesFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        Button activeBtn = getActivity().findViewById(R.id.active_btn);
+        activeBtn.setText("Profile");
 
         userData = UserData.getInstance();
         txtName = view.findViewById(R.id.name);

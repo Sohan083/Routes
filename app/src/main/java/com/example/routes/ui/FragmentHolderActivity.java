@@ -3,7 +3,10 @@ package com.example.routes.ui;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,6 +27,8 @@ public class FragmentHolderActivity extends AppCompatActivity {
     RoutesFragmentManager routesFragmentManager;
     FragmentHolderViewModel fragmentHolderViewModel;
     Observer<String> navigationObserver;
+    Button activeBtn;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,13 +41,21 @@ public class FragmentHolderActivity extends AppCompatActivity {
             @Override
             public void onChanged(String tag) {
                 navigateTo(tag);
+                Log.d("check tag",tag);
             }
         };
+
+        initalize();
+
         profileFragment = ProfileFragment.newInstance();
         routesFragmentManager = RoutesFragmentManager.getInstance();
         routesFragmentManager.initRouteFragmentManger(getSupportFragmentManager());
         fragmentHolderViewModel.getNavigation().observe(this,navigationObserver);
         routesFragmentManager.addFragmentToBackStact(profileFragment, NavigatorsTags.PROFILE_FRAGMENT,binding.fragmentHolder.getId());
+    }
+
+    private void initalize() {
+        activeBtn = binding.activeBtn;
     }
 
     private void navigateTo(String tag) {
