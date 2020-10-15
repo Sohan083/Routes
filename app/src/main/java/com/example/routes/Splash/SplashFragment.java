@@ -1,21 +1,29 @@
 package com.example.routes.Splash;
 
-import android.graphics.Color;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.routes.RoutesFragment;
+import com.example.routes.R;
+import com.example.routes.fragment.RoutesFragment;
 import com.example.routes.appcomponents.NavigatorsTags;
 import com.example.routes.architecture.MainViewModel;
 import com.example.routes.databinding.SplashFragmentBinding;
+import com.example.routes.ui.LoginActivity;
 
 public class SplashFragment extends RoutesFragment {
     SplashFragmentBinding binding;
@@ -47,6 +55,31 @@ public class SplashFragment extends RoutesFragment {
                 mainViewModel.setNavigation(NavigatorsTags.LANDING_FRAGMENT);
             }
         },timeOut);
+
+
+        ImageView iv = view.findViewById(R.id.iv);
+
+        Animation animation = new AlphaAnimation(1, (float) 0.70); //to change visibility from visible to invisible
+        animation.setDuration(2000); //1 second duration for each animation cycle
+        animation.setInterpolator(new LinearInterpolator());
+        iv.startAnimation(animation); //to start animation
+
+        final Intent i = new Intent(getContext(), LoginActivity.class);
+        Thread timer = new Thread() {
+            public void run() {
+                try {
+                    sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                finally {
+                    startActivity(i);
+                    getActivity().finish();
+                }
+            }
+        };
+        timer.start();
     }
+
 
 }

@@ -27,7 +27,7 @@ public class RoutesFragmentManager {
         manager.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
             @Override
             public void onBackStackChanged() {
-                Log.d("akash_debug", "onCreate: "+ getFragmentsTagList());
+                Log.d("sohan_debug", "onCreate: "+ getFragmentsTagList());
             }
         });
     }

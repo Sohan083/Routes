@@ -1,4 +1,4 @@
-package com.example.routes;
+package com.example.routes.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,10 +13,11 @@ import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LifecycleRegistry;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.routes.architecture.FragmentHolderViewModel;
 import com.example.routes.architecture.MainViewModel;
 
 public abstract class RoutesFragment extends Fragment {
-    protected MainViewModel mainViewModel;
+    protected FragmentHolderViewModel fragmentHolderViewModel;
     protected FragmentLifecycleOwner fragmentLifecycleOwner;
 
     public static class FragmentLifecycleOwner implements LifecycleOwner{
@@ -32,7 +33,7 @@ public abstract class RoutesFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
+        fragmentHolderViewModel = new ViewModelProvider(requireActivity()).get(FragmentHolderViewModel.class);
     }
 
     @Override
