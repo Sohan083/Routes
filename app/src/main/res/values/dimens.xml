@@ -3,7 +3,8 @@
     <dimen name="fragment_horizontal_margin">16dp</dimen>
     <dimen name="fragment_vertical_margin">16dp</dimen>
 
-    <dimen name="active_btn_size">60dp</dimen>
+    <dimen name="active_btn_size">75dp</dimen>
     <dimen name="inactive_btn_size">15dp</dimen>
     <dimen name="next_btn_size">30dp</dimen>
+    <dimen name="tittle_text_size">16sp</dimen>
 </resources>

@@ -15,7 +15,6 @@ import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 
 import com.example.routes.R;
-import com.example.routes.Splash.SplashFragment;
 import com.example.routes.appcomponents.NavigatorsTags;
 import com.example.routes.appcomponents.RoutesFragmentManager;
 import com.example.routes.architecture.MainViewModel;

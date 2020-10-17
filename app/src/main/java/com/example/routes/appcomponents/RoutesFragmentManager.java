@@ -32,7 +32,7 @@ public class RoutesFragmentManager {
         });
     }
 
-    public void addFragmentToBackStact(Fragment fragment, String tag, int containerViewId)
+    public void addFragmentToBackStack(Fragment fragment, String tag, int containerViewId)
     {
         FragmentTransaction fragmentTransaction = manager.beginTransaction();
         fragmentTransaction.setReorderingAllowed(true);
@@ -63,6 +63,21 @@ public class RoutesFragmentManager {
                 .commitAllowingStateLoss();
     }
 
+    public void hide(Fragment fragment)
+    {
+        manager.beginTransaction()
+                .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+                .hide(fragment)
+                .commit();
+    }
+    public void show(Fragment fragment)
+    {
+        manager.beginTransaction()
+                .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+                .show(fragment)
+                .commit();
+    }
+
 
     public ArrayList<String> getFragmentsTagList(){
         ArrayList<String> fragmentList = new ArrayList<>();
@@ -72,4 +87,25 @@ public class RoutesFragmentManager {
         return fragmentList;
     }
 
+    public int getIndexOfCurrentFragment()
+    {
+        return manager.getBackStackEntryCount()-1;
+    }
+
+    public String getTagOfCurrentFragment()
+    {
+        return manager.getBackStackEntryAt(manager.getBackStackEntryCount()-1).getName();
+    }
+
+    public String getTagOfCurrentVisibleFragment() {
+
+        for (Fragment fragment : manager.getFragments())
+        {
+            if(fragment != null && fragment.isVisible())
+            {
+                return fragment.getTag();
+            }
+        }
+        return null;
+    }
 }

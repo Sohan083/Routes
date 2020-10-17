@@ -124,15 +124,16 @@ public class ProfileFragment extends RoutesFragment {
         }, new Response.ErrorListener() {
             public void onErrorResponse(VolleyError error) {
                 sweetAlertDialog.dismiss();
-                CustomUtility.showError(getActivity(), "Network Error, try again!", "Failed");
                 final SweetAlertDialog s = new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE);
                 s.setConfirmText("Ok");
                 s.setTitleText("Network Error, try again!");
                 s.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                     public void onClick(SweetAlertDialog sweetAlertDialog) {
+                        //s.dismissWithAnimation();
+                       // startActivity(getActivity().getIntent());
+                       // getActivity().finish();
                         s.dismissWithAnimation();
-                        startActivity(getActivity().getIntent());
-                        getActivity().finish();
+                        getStatus();
                     }
                 });
                 s.show();
